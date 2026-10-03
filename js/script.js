@@ -1,5 +1,5 @@
 const store = {
-  whatsapp: "5511920012281",
+  whatsapp: "5511999999999",
   instagram: "https://www.instagram.com/crislingerie",
 };
 
