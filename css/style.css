@@ -5,12 +5,15 @@
   --rose-500: #c83d72;
   --rose-100: #f6d8e4;
   --rose-50: #fff7fa;
+  --cream: #fffaf3;
+  --gold: #d7a85e;
   --ink: #1f1720;
   --muted: #6f4055;
   --surface: #ffffff;
   --line: #ead6df;
   --whatsapp: #25d366;
-  --shadow: 0 16px 40px rgba(95, 24, 56, 0.12);
+  --shadow: 0 18px 42px rgba(95, 24, 56, 0.14);
+  --shadow-soft: 0 10px 26px rgba(95, 24, 56, 0.08);
 }
 
 * {
@@ -25,7 +28,7 @@ body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   color: var(--ink);
-  background: var(--rose-50);
+  background: linear-gradient(180deg, var(--rose-50) 0%, var(--cream) 48%, #ffffff 100%);
   line-height: 1.6;
 }
 
@@ -48,7 +51,7 @@ a {
   justify-content: space-between;
   gap: 20px;
   padding: 14px clamp(18px, 5vw, 72px);
-  background: rgba(255, 247, 250, 0.94);
+  background: rgba(255, 250, 243, 0.94);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(12px);
 }
@@ -65,7 +68,7 @@ a {
   width: 44px;
   height: 44px;
   border-radius: 8px;
-  background: var(--rose-700);
+  background: linear-gradient(135deg, var(--rose-700), var(--rose-500));
   color: white;
   font-weight: 800;
 }
@@ -98,6 +101,30 @@ a {
   color: var(--rose-700);
 }
 
+.nav-menu a {
+  position: relative;
+  padding-block: 4px;
+}
+
+.nav-menu a::after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--gold);
+  content: "";
+  opacity: 0;
+  transform: scaleX(0.4);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.nav-menu a:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
 .menu-toggle {
   display: none;
   width: 42px;
@@ -120,7 +147,8 @@ a {
   grid-template-columns: minmax(0, 1fr) minmax(320px, 520px);
   gap: clamp(28px, 5vw, 72px);
   align-items: center;
-  padding: clamp(42px, 8vw, 92px) clamp(18px, 5vw, 72px);
+  padding: clamp(48px, 8vw, 96px) clamp(18px, 5vw, 72px) clamp(36px, 7vw, 72px);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(246, 216, 228, 0.28));
 }
 
 .hero-content {
@@ -146,8 +174,8 @@ p {
 h1 {
   margin-bottom: 18px;
   color: var(--rose-900);
-  font-size: clamp(2.2rem, 6vw, 4.8rem);
-  line-height: 1.02;
+  font-size: clamp(2.25rem, 5.4vw, 4.35rem);
+  line-height: 1.04;
 }
 
 h2 {
@@ -166,6 +194,23 @@ h3 {
 .contact-section p {
   color: var(--muted);
   font-size: 1.05rem;
+}
+
+.hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.hero-pills span {
+  padding: 8px 12px;
+  border: 1px solid rgba(138, 31, 77, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--rose-800);
+  font-size: 0.9rem;
+  font-weight: 800;
 }
 
 .hero-actions,
@@ -193,7 +238,7 @@ h3 {
 }
 
 .button.primary {
-  background: var(--rose-700);
+  background: linear-gradient(135deg, var(--rose-700), var(--rose-500));
   color: white;
   box-shadow: var(--shadow);
 }
@@ -204,6 +249,11 @@ h3 {
   border-color: var(--line);
 }
 
+.button.secondary:hover {
+  border-color: rgba(138, 31, 77, 0.28);
+  box-shadow: var(--shadow-soft);
+}
+
 .button.instagram {
   color: white;
   background: var(--rose-500);
@@ -211,12 +261,29 @@ h3 {
 
 .hero-showcase {
   position: relative;
+  padding: 10px;
+  border: 1px solid rgba(234, 214, 223, 0.9);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.56);
+  box-shadow: var(--shadow-soft);
 }
 
 .hero-showcase img {
   width: 100%;
   border-radius: 8px;
   box-shadow: var(--shadow);
+}
+
+.showcase-tag {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: var(--rose-900);
+  color: white;
+  font-size: 0.82rem;
+  font-weight: 800;
 }
 
 .showcase-note {
@@ -226,7 +293,7 @@ h3 {
   max-width: 220px;
   padding: 14px;
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(255, 255, 255, 0.96);
   border: 1px solid var(--line);
 }
 
@@ -270,6 +337,7 @@ h3 {
 
 .quick-info article {
   padding: 22px;
+  box-shadow: var(--shadow-soft);
 }
 
 .quick-info span {
@@ -302,6 +370,24 @@ h3 {
   margin-bottom: 28px;
 }
 
+.scope-banner {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  max-width: 920px;
+  margin: -8px 0 24px;
+  padding: 14px 16px;
+  border: 1px solid rgba(215, 168, 94, 0.46);
+  border-radius: 8px;
+  background: rgba(255, 250, 243, 0.92);
+  color: var(--muted);
+}
+
+.scope-banner strong {
+  color: var(--rose-900);
+  white-space: nowrap;
+}
+
 .catalog-toolbar {
   display: flex;
   flex-wrap: wrap;
@@ -318,6 +404,7 @@ h3 {
   color: var(--muted);
   font-weight: 800;
   cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .filter-button.active,
@@ -330,18 +417,30 @@ h3 {
 .product-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  gap: 22px;
 }
 
 .product-card {
   overflow: hidden;
-  box-shadow: 0 10px 28px rgba(95, 24, 56, 0.08);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.product-media {
+  padding: 12px;
+  background: linear-gradient(180deg, #fff, var(--rose-50));
 }
 
 .product-card img {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
+  border-radius: 8px;
   background: var(--rose-100);
 }
 
@@ -367,6 +466,11 @@ h3 {
   font-weight: 800;
 }
 
+.product-topline strong {
+  color: var(--rose-900);
+  font-size: 0.95rem;
+}
+
 .product-card h3 {
   margin-bottom: 8px;
   font-size: 1.35rem;
@@ -388,6 +492,32 @@ h3 {
   font-weight: 700;
 }
 
+.product-features {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 18px;
+  padding: 0;
+  list-style: none;
+}
+
+.product-features li {
+  position: relative;
+  padding-left: 20px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.product-features li::before {
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--gold);
+  content: "";
+}
+
 .split-section {
   display: grid;
   grid-template-columns: minmax(0, 0.8fr) minmax(300px, 1fr);
@@ -395,6 +525,16 @@ h3 {
   align-items: start;
   background: var(--surface);
   border-block: 1px solid var(--line);
+}
+
+.inline-link {
+  display: inline-flex;
+  margin-top: 12px;
+  color: var(--rose-700);
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: rgba(138, 31, 77, 0.32);
+  text-underline-offset: 4px;
 }
 
 .steps {
@@ -406,12 +546,29 @@ h3 {
 }
 
 .steps li {
+  position: relative;
   padding: 18px;
+  padding-left: 70px;
+  box-shadow: var(--shadow-soft);
 }
 
 .steps strong,
 .steps span {
   display: block;
+}
+
+.step-number {
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: var(--rose-700);
+  color: white;
+  font-weight: 900;
 }
 
 .evolution {
@@ -426,6 +583,21 @@ h3 {
 
 .feature-list article {
   padding: 22px;
+  box-shadow: var(--shadow-soft);
+}
+
+.feature-list article h3 {
+  margin-bottom: 8px;
+}
+
+.feature-list article::before {
+  display: block;
+  width: 36px;
+  height: 4px;
+  margin-bottom: 16px;
+  border-radius: 999px;
+  background: var(--gold);
+  content: "";
 }
 
 .contact-section {
@@ -433,7 +605,9 @@ h3 {
   justify-content: space-between;
   gap: 28px;
   align-items: center;
-  background: var(--rose-900);
+  background:
+    linear-gradient(135deg, rgba(51, 20, 33, 0.96), rgba(95, 24, 56, 0.96)),
+    var(--rose-900);
   color: white;
 }
 
@@ -474,6 +648,15 @@ h3 {
   box-shadow: 0 14px 30px rgba(37, 211, 102, 0.28);
 }
 
+.floating-whatsapp:hover {
+  transform: translateY(-2px);
+}
+
+:focus-visible {
+  outline: 3px solid rgba(215, 168, 94, 0.72);
+  outline-offset: 3px;
+}
+
 @media (max-width: 920px) {
   .hero,
   .split-section {
@@ -483,6 +666,10 @@ h3 {
   .quick-info,
   .feature-list {
     grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding-top: 34px;
   }
 }
 
@@ -518,6 +705,14 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  .scope-banner {
+    flex-direction: column;
+  }
+
+  .scope-banner strong {
+    white-space: normal;
+  }
+
   .hero-actions,
   .contact-actions,
   .contact-section,
@@ -534,5 +729,15 @@ h3 {
     position: static;
     margin-top: 12px;
     max-width: none;
+  }
+
+  .showcase-tag {
+    top: 18px;
+    left: 18px;
+  }
+
+  .floating-whatsapp {
+    left: 18px;
+    right: 18px;
   }
 }

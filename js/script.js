@@ -12,7 +12,8 @@ const products = [
     sizes: "M ao GG",
     price: "Consultar",
     image: "img/produtos/conjunto-feminino.png",
-    description: "Produto demonstrativo para apresentar a primeira vitrine da SOCRIS.",
+    description: "Opcao inicial para apresentar a linha de conjuntos com atendimento personalizado.",
+    features: ["Atendimento direto", "Foto real na versao final"],
   },
   {
     id: 2,
@@ -22,7 +23,8 @@ const products = [
     sizes: "M ao GG",
     price: "Consultar",
     image: "img/produtos/pijama-feminino.png",
-    description: "Modelo inicial para divulgar a linha de pijamas femininos.",
+    description: "Produto demonstrativo para divulgar pijamas femininos com visual delicado e acessivel.",
+    features: ["Compra assistida", "Tamanhos informados"],
   },
 ];
 
@@ -45,7 +47,9 @@ function renderProducts(filter = "todos") {
 
     return `
       <article class="product-card">
-        <img src="${product.image}" alt="Imagem demonstrativa de ${product.name}">
+        <div class="product-media">
+          <img src="${product.image}" alt="Imagem demonstrativa de ${product.name}">
+        </div>
         <div class="product-body">
           <div class="product-topline">
             <span class="tag">${product.label}</span>
@@ -57,6 +61,9 @@ function renderProducts(filter = "todos") {
             <span>Tamanhos ${product.sizes}</span>
             <span>Compra manual</span>
           </div>
+          <ul class="product-features" aria-label="Detalhes do produto">
+            ${product.features.map((feature) => `<li>${feature}</li>`).join("")}
+          </ul>
           <a class="button primary" href="${buildWhatsappLink(message)}" target="_blank" rel="noopener">
             Consultar no WhatsApp
           </a>
